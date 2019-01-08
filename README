@@ -1,0 +1,45 @@
+Limitations:
+
+0\ Works with => https://calculator.s3.amazonaws.com/index.html
+1\ Works with data put in format mentioned below.
+2\ Data filename and path is hardcoded.
+3\ All aws ec2 server type are used as "Windows". Change the code, line nos to use another.
+4\ RDS is hardcoded to use MSSQL Standard license. Change the code, line nos to use another.
+5\ This works better with Chrome browser, so configured to use ChromeDriver.
+6\ Club the DB instance at the bottom, and start the counter from 1.
+ 
+Features:
+
+1\ Will add all EC2 instance with EBS drive of size mentioned.
+2\ RDS instance from a CSV file(exported from excel) in format mentioned below.
+
+Installation:
+
+1\ git clone the repo.
+2\ copy chromedriver (download) to /usr/bin/
+3\ cd aws_tco_populator
+4\ python -B testsuite.py 
+
+How to use:
+
+Put your data in a CSV format (counter,description,nos_instances,utilization,disk,memory,cores) for eg: 
+
+---
+
+counter,description,nos_instances,utilization,disk,memory,cores
+1,6core.c5.2xlarge,3,80,176,16,6
+2,8core.c4.2xlarge,11,100,605,16,8
+3,10core.c5.2xlarge,2,80,327,16,10
+1,2coredb.m4.2xlarge,1,80,1000,32,2
+2,4coredb.m4.2xlarge,10,80,1026,64,4
+3,6coredb.m4.2xlarge,2,80,2965,12,6
+4,8coredb.m4.2xlarge,11,80,1687,32,8
+
+---
+
+The type of machine you want should be description column, in the format (vcpu_count + 'core' + '.' + aws_type) for eg: 6core.c5.2xlarge. RDS put db in the description, for eg: 6coredb.m4.4xlarge.
+
+git clone the repo.
+copy chromedriver (download) to /usr/bin/
+cd aws_tco_populator
+python -B testsuite.py 
